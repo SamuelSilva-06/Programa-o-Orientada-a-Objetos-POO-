@@ -34,5 +34,6 @@ public class Personagem {
 
     void receberdano(double dano){
         HP -= dano;
+        if (HP < 0) HP = 0;
     }
 }

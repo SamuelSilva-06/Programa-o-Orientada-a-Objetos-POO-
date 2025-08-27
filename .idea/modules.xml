@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/BatalhaSimples/BatalhaSimples.iml" filepath="$PROJECT_DIR$/BatalhaSimples/BatalhaSimples.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Programa-o-Orientada-a-Objetos-POO-.iml" filepath="$PROJECT_DIR$/.idea/Programa-o-Orientada-a-Objetos-POO-.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Projeto POO Aula1/Projeto POO Aula1.iml" filepath="$PROJECT_DIR$/Projeto POO Aula1/Projeto POO Aula1.iml" />
+    </modules>
+  </component>
+</project>
