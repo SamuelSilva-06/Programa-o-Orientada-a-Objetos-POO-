@@ -6,6 +6,7 @@ public class Personagem {
     int nivel;
     SKILL Skill;
 
+
     public Personagem(String nome,JOB job,int HP_max ,int HP,SKILL Skill){
         this.nome = nome;
         this.job = job;
@@ -26,6 +27,7 @@ public class Personagem {
                 "\nSkill: "+this.Skill.nome+ " (Base "+this.Skill.danobase+", Tipo "+this.Skill.elemento+
                 ", Reduz defesa em "+this.Skill.efeitodefesa+ "%, Cura "+this.Skill.efeitocura+
                 ", Furia "+this.Skill.efeitofuria+")\n");
+
     }
 
     void atacar(Personagem alvo){
@@ -35,5 +37,6 @@ public class Personagem {
     void receberdano(double dano){
         HP -= dano;
         if (HP < 0) HP = 0;
+
     }
 }
