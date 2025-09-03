@@ -1,72 +1,71 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Treinador {
-    private  String nome;
-    int idade;
-    String[] Medalhas = new String[8];
-    int quntmedalhas = 0;
-    ArrayList<Pokemon> Equipe = new ArrayList<>();
+class Treinador {
+    private String nome;
+    private int idade;
+    private String[] medalhas = new String[8];
+    private int qtdMedalhas = 0;
+    private ArrayList<Pokemon> equipe = new ArrayList<>();
 
-    Treinador(String nome,int idade){
+    public Treinador(String nome, int idade) {
         this.nome = nome;
         this.idade = idade;
     }
 
-    void exibirpersonagem(){
-        System.out.println("O treinador: \n" +
-                "nome: "+nome+
-                "\nIdade"+idade);
-        System.out.println("Medalhas: ");
+    public void exibirPersonagem() {
+        System.out.println("Treinador: " + nome + "\nIdade: " + idade);
 
-        for (int i = 0; i < quntmedalhas ; i++){
-            System.out.println(Medalhas[i]);
-        }
-        if (quntmedalhas == 0){
+        System.out.println("Medalhas:");
+        if (qtdMedalhas == 0) {
             System.out.println("Nenhuma medalha");
+        } else {
+            for (int i = 0; i < qtdMedalhas; i++) {
+                System.out.println("- " + medalhas[i]);
+            }
         }
-        System.out.println("Equipe pokemon: ");
-        if (Equipe.isEmpty()){
-            System.out.println("Nenhum Pokemon");
-        }else{
-            for (Pokemon p : Equipe){
-                exibirpersonagem();
+
+        System.out.println("Equipe Pokémon:");
+        if (equipe.isEmpty()) {
+            System.out.println("Nenhum Pokémon");
+        } else {
+            for (Pokemon p : equipe) {
+                p.exibirPokemon();
             }
         }
     }
 
-    void adicionarpokemon(Pokemon p){
-        if (Equipe.size() < 0){
-            Equipe.add(p);
-            System.out.println(p.Especie+" Adicionado a Equipe");
-        }else{
-            System.out.println("Equipe cheia! (max. 6 pokemon");
+    public void adicionarPokemon(Pokemon p) {
+        if (equipe.size() < 6) {
+            equipe.add(p);
+            System.out.println(p.getEspecie() + " adicionado à equipe!");
+        } else {
+            System.out.println("Equipe cheia! (máx. 6 Pokémon)");
         }
     }
 
-    void removerpokemon(String nomePokemon){
-        for(Pokemon p:Equipe){
-            if (p.Especie.equalsIgnoreCase(nomePokemon)){
-                Equipe.remove(p);
-                System.out.println(nomePokemon+" Foi removido da equipe");
+    public void removerPokemon(String especie) {
+        for (int i = 0; i < equipe.size(); i++) {
+            if (equipe.get(i).getEspecie().equalsIgnoreCase(especie)) {
+                equipe.remove(i);
+                System.out.println(especie + " foi removido da equipe");
                 return;
             }
         }
-        System.out.println("Pokemon nao encontrado na equipe");
+        System.out.println("Pokémon não encontrado na equipe");
     }
 
-    void adicionarmedalha(String Medalha){
-        if (quntmedalhas < 8){
-            Medalhas[quntmedalhas] = Medalha;
-            quntmedalhas++;
-            System.out.println("Medalha "+Medalha+" conquistada");
-
-
-        }else{
-            System.out.println("Ja possui todas as medalhas");
+    public void adicionarMedalha(String medalha) {
+        if (qtdMedalhas < 8) {
+            medalhas[qtdMedalhas] = medalha;
+            qtdMedalhas++;
+            System.out.println("Medalha " + medalha + " conquistada!");
+        } else {
+            System.out.println("Já possui todas as medalhas!");
         }
     }
-    public String getNome(){
-        return  nome;
+
+    public String getNome() {
+        return nome;
     }
 }

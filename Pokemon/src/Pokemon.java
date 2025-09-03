@@ -1,20 +1,35 @@
+import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Pokemon {
-    protected String Especie;
-    protected String Tipo;
-    protected int nivel;
+// Classe Pokémon
+class Pokemon {
+    private String especie;
+    private String tipo;
+    private int nivel;
 
-    public Pokemon(String Especie,String Tipo,int nivel){
-        this.Especie = Especie;
-        this.Tipo = Tipo;
-        if (nivel < 1)this.nivel = 1;
-        else if (nivel > 100)this.nivel = 100;
+    public Pokemon(String especie, String tipo, int nivel) {
+        this.especie = especie;
+        this.tipo = tipo;
+        if (nivel < 1) this.nivel = 1;
+        else if (nivel > 100) this.nivel = 100;
         else this.nivel = nivel;
     }
 
-    void exibirinfo(){
-        System.out.println("Especie: "+Especie+
-                "\ntipo: "+Tipo+
-                "\nNivel: "+nivel);
+    public void exibirPokemon() {
+        System.out.println("Espécie: " + especie +
+                "\n - Tipo: " + tipo +
+                "\n - Nível: " + nivel);
+    }
+
+    public String getEspecie() {
+        return especie;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public int getNivel() {
+        return nivel;
     }
 }

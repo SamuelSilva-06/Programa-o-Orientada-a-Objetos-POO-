@@ -11,14 +11,14 @@ public class Sistema {
         do {
             System.out.println("\n=== MENU PRINCIPAL ===");
             System.out.println("1 - Cadastrar novo treinador");
-            System.out.println("2 - Mostrar dados");
-            System.out.println("3 - Adicionar Pokémon");
-            System.out.println("4 - Remover Pokémon");
-            System.out.println("5 - Ganhar medalha");
+            System.out.println("2 - Mostrar dados do treinador");
+            System.out.println("3 - Adicionar Pokémon ao treinador");
+            System.out.println("4 - Remover Pokémon do treinador");
+            System.out.println("5 - Ganhar medalha de treinador");
             System.out.println("6 - Sair");
             System.out.print("Escolha: ");
             opcao = sc.nextInt();
-            sc.nextLine();
+            sc.nextLine(); // consumir Enter
 
             switch (opcao) {
                 case 1 -> cadastrarTreinador();
@@ -32,7 +32,6 @@ public class Sistema {
 
         } while (opcao != 6);
     }
-
 
     private Treinador selecionarTreinador() {
         if (treinadores.isEmpty()) {
@@ -56,55 +55,58 @@ public class Sistema {
         return treinadores.get(escolha - 1);
     }
 
-
     private void cadastrarTreinador() {
         System.out.print("Digite o nome do treinador: ");
         String nome = sc.nextLine();
-        System.out.println("Digite a idade");
+
+        System.out.print("Digite a idade: ");
         int idade = sc.nextInt();
-        treinadores.add(new Treinador(nome,idade));
+        sc.nextLine();
+
+        treinadores.add(new Treinador(nome, idade));
         System.out.println("Treinador cadastrado com sucesso!");
     }
 
     private void mostrarDados() {
         Treinador t = selecionarTreinador();
-        if (t != null){
-            t.exibirpersonagem();
+        if (t != null) {
+            t.exibirPersonagem();
         }
     }
 
     private void adicionarPokemon() {
-        Treinador t = selecionarTreinador();
-        if (t != null) {
-            System.out.print("Digite a especie do Pokémon: ");
-            String Especie = sc.nextLine();
-            System.out.println("Tipo: ");
-            String Tipo = sc.nextLine();
-            System.out.println("Nivel (1 a 100): ");
-            int nivel = sc.nextInt();
+        Treinador treinadorEscolhido = selecionarTreinador();
+        if (treinadorEscolhido != null) {
+            System.out.print("Digite o nome do Pokémon: ");
+            String nomePokemon = sc.nextLine();
+
+            System.out.print("Digite o tipo do Pokémon: ");
+            String tipoPokemon = sc.nextLine();
+
+            System.out.print("Digite o nível (1 a 100): ");
+            int nivelPokemon = sc.nextInt();
             sc.nextLine();
 
-            t.adicionarpokemon(new Pokemon(Especie,Tipo,nivel));
+            Pokemon novoPokemon = new Pokemon(nomePokemon, tipoPokemon, nivelPokemon);
+            treinadorEscolhido.adicionarPokemon(novoPokemon);
         }
     }
 
     private void removerPokemon() {
-        Treinador t = selecionarTreinador();
-        if (t != null) {
-            System.out.print("Digite a especie do pokemon que quer  remover: ");
+        Treinador treinadorEscolhido = selecionarTreinador();
+        if (treinadorEscolhido != null) {
+            System.out.print("Digite o nome do Pokémon que deseja remover da equipe: ");
             String especie = sc.nextLine();
-            t.removerpokemon(especie);
-            System.out.println("Pokémon removido (se existia).");
+            treinadorEscolhido.removerPokemon(especie);
         }
     }
 
     private void ganharMedalha() {
         Treinador t = selecionarTreinador();
         if (t != null) {
-            ganharMedalha();
-            System.out.println("Medalha concedida!");
+            System.out.print("Digite o nome da medalha conquistada: ");
+            String medalha = sc.nextLine();
+            t.adicionarMedalha(medalha);
         }
     }
-
-
 }
